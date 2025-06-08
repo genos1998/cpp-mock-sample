@@ -1,0 +1,29 @@
+FROM ubuntu:18.04
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    build-essential cmake git curl ca-certificates \
+    libssl-dev libjansson-dev libiniparser-dev
+
+# Create all required mock paths
+RUN mkdir -p /usr/local/cpp/out \
+             /usr/local/nd_thirdparty_lib/lib/kvs_sdk/bagheera2/lib \
+             /usr/local/nd_thirdparty_lib/lib/openssl_1.1.1v/bagheera2/lib \
+             /usr/local/nd_thirdparty_lib/lib \
+             /home/ubuntu/bagheera2_essentials/lib_for_device \
+             /bagheera_1_py3.5/lib
+
+# Create mock .so libraries
+RUN echo 'void dummy(){}' | gcc -x c - -fPIC -shared -o /usr/local/cpp/out/libndcore.so && \
+    cp /usr/local/cpp/out/libndcore.so /usr/local/lib/libsys_obd.so && \
+    cp /usr/local/cpp/out/libndcore.so /usr/local/lib/libsys.so && \
+    cp /usr/local/cpp/out/libndcore.so /bagheera_1_py3.5/lib/libprotobuf.so
+
+WORKDIR /workspace
+COPY Makefile Makefile.common ./
+COPY services/awsiot services/awsiot
+
+WORKDIR /workspace/services/awsiot
+RUN make all
+
+CMD ["./awsiot"]

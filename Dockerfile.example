@@ -1,0 +1,33 @@
+FROM ubuntu:20.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install required tools and dev libs
+RUN apt-get update && apt-get install -y \
+    build-essential g++ cmake git \
+    libssl-dev libjansson-dev \
+    libiniparser-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create directory structure
+WORKDIR /workspace
+
+# Copy everything from your project
+COPY . .
+
+# Optionally: copy dummy libs if real ones are missing (temp workaround)
+RUN mkdir -p /usr/local/lib && \
+    touch /usr/local/lib/libsys_obd.so && \
+    touch /usr/local/lib/libndcore.so && \
+    touch /usr/local/lib/libsys.so && \
+    touch /usr/local/lib/libprotobuf.so && \
+    chmod +x /usr/local/lib/*.so
+
+# Go to the desired service folder
+WORKDIR /workspace/services/example
+
+# Build your service
+RUN make all
+
+# Set default command
+CMD ["./example"]
