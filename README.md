@@ -1,1 +1,2 @@
 # cpp-mock-sample
+dummy
