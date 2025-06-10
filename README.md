@@ -1,2 +1,2 @@
 # cpp-mock-sample
-dummy
+dummy - chck
