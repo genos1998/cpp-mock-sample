@@ -2,6 +2,8 @@
 CXX := g++ -std=c++11
 CC := gcc
 
+.DEFAULT_GOAL := all
+
 # Compilation and include flags
 CFLAGS := -g -DBAGHEERA2 -DLIBSYS_API_EXTENSION -I. -Iinc
 
@@ -14,7 +16,7 @@ OPENSSL_LIB_PATH := $(ND_CORE_LIB_ROOT)/nd_thirdparty_lib/lib/openssl_1.1.1v/bag
 PROTOBUF_PATH := $(PROTOBUF)/bagheera_1_py3.5
 
 # Linker flags
-LDLFLAGS := -lpthread -lrt \
+LDFLAGS := -lpthread -lrt \
 	-L../ \
 	-L/home/ubuntu/bagheera2_essentials/lib_for_device/ \
 	-lsys_obd \
