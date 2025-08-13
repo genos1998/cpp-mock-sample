@@ -1,5 +1,5 @@
 BASE = $(PWD)/../..
-include $(BASE)/Makefile
+include $(BASE)/Makefile.common
 
 SRC := $(wildcard src/*.cpp)
 OBJ := $(patsubst src/%.cpp, out/%.o, $(SRC))
