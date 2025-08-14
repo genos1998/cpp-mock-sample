@@ -1,5 +1,5 @@
 # apm/Makefile
-BASE := $(PWD)/..
+BASE := $(PWD)/.. 
 include $(BASE)/Makefile.common
 
 SRC := $(wildcard src/*.cpp)
