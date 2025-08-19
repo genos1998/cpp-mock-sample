@@ -1,6 +1,6 @@
 BASE = $(PWD)
 include $(BASE)/Makefile.common
-
+ 
 awsiot_dir:= awsiot
 apm_dir := apm
 bagheera2: bagheera_dir := nd-central/device/bagheera2
