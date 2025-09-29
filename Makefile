@@ -41,7 +41,7 @@ build_services := apm awsiot bagheera cam_rec circular_buffer uploader scheduler
 else ifeq "$(MAKECMDGOALS)" "bagheera3"
 build_services := awsiot apm bagheera cam_rec circular_buffer uploader scheduler_manager ext_cam wifi_mgr installer_app nd_bt
 else ifeq "$(MAKECMDGOALS)" "x86"
-build_services := awsiot bagheera circular_buffer uploader scheduler_manager ext_cam wifi_mgr installer_app speed svc service_mon 
+build_services := awsiot bagheera circular_buffer uploader scheduler_manager ext_cam wifi_mgr installer_app 
 else 
 build_services := awsiot bagheera circular_buffer uploader scheduler_manager ext_cam wifi_mgr installer_app speed svc service_mon gps
 endif

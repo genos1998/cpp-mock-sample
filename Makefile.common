@@ -4,7 +4,7 @@ CC := gcc
 
 # Compilation and include flags
 CFLAGS := -g -DBAGHEERA2 -DLIBSYS_API_EXTENSION -I. -Iinc
-
+ 
 # Paths (can be overridden by environment)
 ND_CORE_LIB_ROOT ?= /usr/local
 PROTOBUF ?= /opt/protobuf
