@@ -4,7 +4,7 @@ CC := gcc
 
 # Compilation and include flags
 CFLAGS := -g -DBAGHEERA2 -DLIBSYS_API_EXTENSION -I. -Iinc
-
+ 
 # Paths (can be overridden by environment)
 ND_CORE_LIB_ROOT ?= /usr/local
 PROTOBUF ?= /opt/protobuf
@@ -26,7 +26,8 @@ LDLFLAGS := -lpthread -lrt \
 	-L$(OPENSSL_LIB_PATH) -lcrypto -lssl \
 	-L$(KVS_LIB64_PATH) \
 	-L$(PROTOBUF_PATH)/lib \
-	-lprotobuf
+	-lprotobuf \
+	-Wl,--verbose=99
 
 # Include paths
 _INCLUDES := -I$(ND_CORE_LIB_ROOT)/cpp/inc/ndmb \
