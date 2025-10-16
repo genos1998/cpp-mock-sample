@@ -8,7 +8,7 @@ EXE := apm
 
 OUT_DIR := out
 SRC_DIR := src
-
+ 
 SRC := $(wildcard $(SRC_DIR)/*.cpp)
 OBJ := $(patsubst $(SRC_DIR)/%.cpp,$(OUT_DIR)/%.o,$(SRC))
 C_INCLUDES := $(addprefix -1, $(C_INCLUDES))
